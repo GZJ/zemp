@@ -80,12 +80,14 @@
 ;;;;; playlist buffer
 (defun zemp-open-dir(path)
   (interactive "strack path:")
-  (with-current-buffer (switch-to-buffer (format "%s-%s" "zemp" (file-name-nondirectory path)))
+  (setq b  (switch-to-buffer (format "%s-%s" "zemp" (file-name-nondirectory path))))
+  (with-current-buffer b
     (progn
       (print (buffer-name (current-buffer)))
       )
     (zemp-playlist-init (expand-file-name path))
     )
+  b
   )
 
 (defun zemp-playlist-init (path)
