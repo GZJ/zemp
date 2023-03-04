@@ -54,32 +54,6 @@
     )
   )
 
-(defun zemp-play(track)
-  (interactive)
-  (if (get-buffer "zemp-mplayer")
-      (zemp-stop)
-    )
-  (message track)
-  (start-process "mplayer" "zemp-mplayer" "mplayer" "-slave" "-quiet" "-really-quiet" track)
-  )
-
-(defun zemp-resume()
-  (interactive)
-  (zemp-player-send-cmd "pause\n")
-  )
-
-(defun zemp-pause()
-  (interactive)
-  (zemp-player-send-cmd "pause\n")
-  )
-
-(defun zemp-stop()
-  (interactive)
-  (let ((kill-buffer-query-functions nil))
-    (kill-buffer "zemp-mplayer")
-    )
-  )
-
 (defun zemp-seek-forward()
   (interactive)
   (zemp-player-send-cmd "seek 10\n")
