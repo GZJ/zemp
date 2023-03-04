@@ -175,15 +175,26 @@
 ;;;;; modeline
 (defun zemp-modeline ()
   (setq mode-line-format
-	'("♬"
+	'(
+	  "mode:"
+	  (:eval (symbol-name zemp-play-mode))
+	  " | "
+	  (:eval
+           (propertize "play"
+		       'mouse-face 'mode-line-highlight
+		       'keymap zemp-modeline-play-map))
+	  " | "
+	  "♬"
 	  " "
 	  zemp-current-track-name
-	  " "
-	  "| mode:"
-	  (:eval (symbol-name zemp-play-mode))
 	  )
 	)
   )
+
+(defvar zemp-modeline-play-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map [mode-line down-mouse-1] 'zemp-resume)
+    map))
 
 ;;;; --------------- play mode --------------------
 ;;;;; set play mode
