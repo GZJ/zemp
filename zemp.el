@@ -200,29 +200,26 @@
 ;;;;; set play mode
 (defun zemp-play-mode-seq()
   (interactive)
-  (setq zemp-play-mode 'Seq)
   (zemp-play-mode-set 'Seq)
   )
 
 (defun zemp-play-mode-loop()
   (interactive)
-  (setq zemp-play-mode 'Loop)
   (zemp-play-mode-set 'Loop)
   )
 
 (defun zemp-play-mode-shuffle ()
   (interactive)
-  (setq zemp-play-mode 'Shuffle)
   (zemp-play-mode-set 'Shuffle)
   )
 
 (defun zemp-play-mode-repeat()
   (interactive)
-  (setq zemp-play-mode 'Repeat)
   (zemp-play-mode-set 'Repeat)
   )
 
 (defun zemp-play-mode-set(mode)
+  (setq zemp-play-mode mode)
   (unless (eq nil (get-buffer-process zemp-player-buffer))
     (set-process-sentinel (get-buffer-process zemp-player-buffer) (cdr (assoc mode zemp-play-mode-table)))
     )
