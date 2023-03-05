@@ -77,6 +77,12 @@
   (use-local-map zemp-mode-map)
   )
 ;;;; --------------------- function -------------------
+(defun zemp-kill ()
+  "Delete all buffers starting with \"zemp-\"."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (when (string-prefix-p "zemp-" (buffer-name buffer))
+      (kill-buffer buffer))))
 ;;;;; playlist buffer
 (defun zemp-open-dir(path)
   (interactive "strack path:")
