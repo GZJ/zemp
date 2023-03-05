@@ -176,8 +176,10 @@
 (defun zemp-modeline ()
   (setq mode-line-format
 	'(
-	  "mode:"
-	  (:eval (symbol-name zemp-play-mode))
+	  (:eval
+           (propertize  (concat "mode:" (symbol-name zemp-play-mode))
+			'mouse-face 'mode-line-highlight
+			'keymap zemp-modeline-playmode-map))
 	  " | "
 	  (:eval
            (propertize "play"
@@ -196,8 +198,25 @@
     (define-key map [mode-line down-mouse-1] 'zemp-resume)
     map))
 
+(defvar zemp-modeline-playmode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map [mode-line down-mouse-1] 'zemp-play-mode-toggle)
+    map))
+
+
 ;;;; --------------- play mode --------------------
 ;;;;; set play mode
+(defun zemp-play-mode-toggle()
+  (interactive)
+  (let ((seq (cl-position  (assoc zemp-play-mode zemp-play-mode-table) zemp-play-mode-table)))
+    (if ( eq (length zemp-play-mode-table) (+ seq 1))
+	(setq seq 0)
+      (setq seq (+ seq 1))
+      )
+    (zemp-play-mode-set (car (car (nthcdr seq zemp-play-mode-table))))
+    )
+  )
+
 (defun zemp-play-mode-seq()
   (interactive)
   (zemp-play-mode-set 'Seq)
