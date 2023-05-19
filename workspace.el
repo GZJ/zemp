@@ -1,7 +1,8 @@
 (progn
   (add-to-list 'load-path (expand-file-name "."))
   (find-file "./zemp.el")
-;;  (load-file "./zemp-player-mplayer.el")
+  ;;  (load-file "./zemp-player-mplayer.el")
+  ;;  (load-file "./zemp-player-mpv.el")
   (eval-buffer)
   (add-hook 'after-save-hook #'(lambda ()(eval-buffer)) nil t)
   (select-window (split-window (get-buffer-window) nil 'right))
