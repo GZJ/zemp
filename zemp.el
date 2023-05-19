@@ -27,7 +27,6 @@
 ;;; Code:
 ;;;; --------------------- require -------------------
 (require 'button)
-(require 'zemp-player-mplayer)
 
 ;;customize
 (defgroup zemp nil
@@ -36,6 +35,21 @@
   :group 'multimedia
   :group 'applications
   )
+
+(defcustom zemp-player-package "mplayer"
+  "zemp player"
+  :type 'string
+  :set (lambda (symbol value)
+	 (let ((p (intern (concat "zemp-player-" value))))
+	   (if (featurep p)
+	       (progn (unload-feature p)
+		      (require p))
+	     (require p)
+	     )
+	   )
+	 (setq zemp-player-package value)
+	 )
+  :group 'zemp)
 
 ;;;; --------------------- var -------------------
 ;; var buffer-local
@@ -77,6 +91,31 @@
   (use-local-map zemp-mode-map)
   )
 ;;;; --------------------- function -------------------
+(defun zemp-player-packages-list ()
+  (let ((package-prefix "zemp-player-")
+        (found-packages '()))
+    (dolist (dir load-path)
+      (dolist (file (directory-files dir nil "^[^.]"))
+        (when (string-prefix-p package-prefix file)
+          (let ((package-name (substring file (length package-prefix) -4)))
+            (add-to-list 'found-packages package-name t)))))
+    found-packages))
+
+(defun zemp-player-package-select ()
+  (let ((pkgs (zemp-player-packages-list)))
+    (if pkgs
+        (completing-read "player: " pkgs)
+      (error "No package found."))))
+
+(defun zemp-player-package-set ()
+  "set zemp player"
+  (interactive)
+  (let ((pkg (zemp-player-package-select)))
+    (customize-set-variable 'zemp-player-package pkg)
+    (message pkg)
+    )
+  )
+
 (defun zemp-kill ()
   "Delete all buffers starting with \"zemp-\"."
   (interactive)
