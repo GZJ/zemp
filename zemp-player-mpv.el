@@ -28,6 +28,8 @@
 (setq zemp-player "mpv")
 (setq zemp-player-buffer "zemp-mpv")
 (setq zemp-player-mpvsocket "\\\\.\\pipe\\mpvsocket")
+(defvar zemp-player-paused nil
+  "A variable to track the player's pause state.")
 
 (defun zemp-player-mpv-write-to-mpvsocket (data)
   (let* ((pipe-name zemp-player-mpvsocket)
@@ -46,14 +48,25 @@
   (start-process zemp-player zemp-player-buffer zemp-player "--no-config" "--no-loop-file"  "--no-video"  "--no-audio-display" "--force-window=no" (format "--input-ipc-server=%s" zemp-player-mpvsocket) track)
   )
 
+(defun zemp-toggle ()
+  "Toggle the player pause state."
+  (interactive)
+  (if zemp-player-paused
+      (zemp-resume)
+    (zemp-pause)
+    )
+  )
+
 (defun zemp-resume()
   (interactive)
   (zemp-player-send-cmd "{\"command\": [\"set_property\", \"pause\", false]}")
+  (setq zemp-player-paused nil)
   )
 
 (defun zemp-pause()
   (interactive)
   (zemp-player-send-cmd "{\"command\": [\"set_property\", \"pause\", true]}")
+  (setq zemp-player-paused t)
   )
 
 (defun zemp-stop()

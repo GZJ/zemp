@@ -27,6 +27,8 @@
 
 (setq zemp-player "mplayer")
 (setq zemp-player-buffer "zemp-mplayer")
+(defvar zemp-player-paused nil
+  "A variable to track the player's pause state.")
 
 (defun zemp-play(track)
   (interactive)
@@ -37,14 +39,25 @@
   (start-process "mplayer" "zemp-mplayer" "mplayer" "-slave" "-quiet" "-really-quiet" track)
   )
 
+(defun zemp-toggle ()
+  "Toggle the player pause state."
+  (interactive)
+  (if zemp-player-paused
+      (zemp-resume)
+    (zemp-pause)
+    )
+  )
+
 (defun zemp-resume()
   (interactive)
   (zemp-player-send-cmd "pause\n")
+  (setq zemp-player-paused nil)
   )
 
 (defun zemp-pause()
   (interactive)
   (zemp-player-send-cmd "pause\n")
+  (setq zemp-player-paused t)
   )
 
 (defun zemp-stop()

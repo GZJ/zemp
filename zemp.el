@@ -77,7 +77,7 @@
   (define-key zemp-mode-map (kbd "p") 'zemp-playlist-prev)
 
   (define-key zemp-mode-map (kbd "s") 'zemp-stop)
-  (define-key zemp-mode-map (kbd "SPC") 'zemp-resume)
+  (define-key zemp-mode-map (kbd "SPC") 'zemp-toggle)
   (define-key zemp-mode-map (kbd "-") 'zemp-volumn-decrease)
   (define-key zemp-mode-map (kbd "+") 'zemp-volumn-increase)
   (define-key zemp-mode-map (kbd "<right>") 'zemp-seek-forward)
