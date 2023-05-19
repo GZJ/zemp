@@ -74,6 +74,7 @@
   (let ((kill-buffer-query-functions nil))
     (kill-buffer zemp-player-buffer)
     )
+  (message "zemp stop")
   )
 
 (defun zemp-seek-forward()
