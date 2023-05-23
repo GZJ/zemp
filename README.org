@@ -4,7 +4,7 @@
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 
-Zemp is a minimalist music player. It plays music through buffer. The backend player can be extended by wrapping third-party players.
+Zemp is a minimalistic music player that play music through buffer. The backend player can be extended by wrapping third-party players.
 
 * Install music player (default mplayer)
 windows
@@ -25,4 +25,10 @@ fedora
 #+begin_src eslip
   (require 'zmep)
   (zemp-open-dir "./Musics")
+#+end_src
+
+* Changing music player
+#+begin_src elisp
+  M-x
+  zemp-player-package-set
 #+end_src
