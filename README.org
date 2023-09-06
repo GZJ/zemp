@@ -12,23 +12,19 @@ windows
   choco install mplayer
   scoop install mplayer
 #+end_src
-debian
+linux
 #+begin_src sh
   apt install mplayer
-#+end_src
-fedora
-#+begin_src sh
   dnf install mplayer
+  pacman -S mplayer
 #+end_src
 
 * Quickstart
 #+begin_src eslip
   (require 'zmep)
   (zemp-open-dir "./Musics")
-#+end_src
 
-* Changing music player
-#+begin_src elisp
+  ;;setup music player
   M-x
   zemp-player-package-set
 #+end_src
