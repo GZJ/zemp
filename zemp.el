@@ -4,7 +4,6 @@
 
 ;; Author: GZJ <gzj00@outlook.com>
 ;; Keywords: music player
-;; Version: 1.1.0
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -64,6 +63,8 @@
 (setq zemp-play-mode 'Seq) ;;Seq Shuffle Loop Repeat
 (setq zemp-play-mode-table '((Seq . zemp-play-seq) (Shuffle . zemp-play-shuffle) (Loop . zemp-play-loop) (Repeat . zemp-play-repeat)))
 
+(defconst zemp-version "1.1.0"
+  "Version number of zemp.")
 ;;;; ---------------------mode key map -------------------
 ;;;;; mode map
 (defvar zemp-mode-map nil "Keymap for `zemp-mode'")
@@ -91,6 +92,11 @@
   (use-local-map zemp-mode-map)
   )
 ;;;; --------------------- function -------------------
+(defun zemp-version()
+  (interactive)
+  (message zemp-version)
+  )
+
 (defun zemp-player-packages-list ()
   (let ((package-prefix "zemp-player-")
         (found-packages '()))
