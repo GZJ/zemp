@@ -26,8 +26,8 @@
 
 (setq zemp-player "mplayer")
 (setq zemp-player-buffer "zemp-mplayer")
-(setq zemp-process '(start-process zemp-player zemp-player-buffer zemp-player))
-(setq zemp-process-args '("-slave" "-quiet" "-really-quiet"))
+(setq zemp-player-process '(start-process zemp-player zemp-player-buffer zemp-player))
+(setq zemp-player-process-args '("-slave" "-quiet" "-really-quiet"))
 
 (defvar zemp-player-paused nil
   "A variable to track the player's pause state.")
@@ -38,7 +38,7 @@
       (zemp-stop)
     )
   (message track)
-  (eval (append zemp-process zemp-process-args (list track)))
+  (eval (append zemp-player-process zemp-player-process-args (list track)))
   )
 
 (defun zemp-toggle ()
