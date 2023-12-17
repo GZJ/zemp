@@ -83,6 +83,8 @@
   (define-key zemp-mode-map (kbd "+") 'zemp-volumn-increase)
   (define-key zemp-mode-map (kbd "<right>") 'zemp-seek-forward)
   (define-key zemp-mode-map (kbd "<left>") 'zemp-seek-back)
+  (define-key zemp-mode-map (kbd "l") 'zemp-seek-forward)
+  (define-key zemp-mode-map (kbd "h") 'zemp-seek-back)
   )
 
 ;;;;; define mode
