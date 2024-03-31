@@ -6,7 +6,7 @@
 
 Zemp is a minimalistic music player that play music through buffer. The backend player can be extended by wrapping third-party players.
 
-* Dependencies 
+* dependencies 
 Install music player (default mplayer)
 #+begin_src sh
   choco install mplayer
@@ -18,7 +18,7 @@ Install music player (default mplayer)
   pacman -S mplayer
 #+end_src
 
-* Quickstart
+* quick start
 #+begin_src eslip
   (require 'zmep)
   (zemp-open-dir "./Musics")
@@ -26,4 +26,19 @@ Install music player (default mplayer)
   ;;setup music player
   M-x
   zemp-player-package-set
+#+end_src
+
+* hotkey
+#+begin_src
+  - `j`: Move cursor to next track in playlist
+  - `k`: Move cursor to previous track in playlist
+  - `g`: Update playlist
+  - `n` or `J`: Move cursor to next track and play
+  - `p` or `K`: Move cursor to previous track and play
+  - `s`: Stop playback
+  - `SPC`: Toggle playback
+  - `-`: Decrease volume
+  - `+`: Increase volume
+  - `<right>` or `l`: Seek forward
+  - `<left>` or `h`: Seek backward
 #+end_src
