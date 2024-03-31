@@ -76,6 +76,8 @@
   (define-key zemp-mode-map (kbd "g") 'zemp-playlist-update)
   (define-key zemp-mode-map (kbd "n") 'zemp-playlist-next)
   (define-key zemp-mode-map (kbd "p") 'zemp-playlist-prev)
+  (define-key zemp-mode-map (kbd "J") 'zemp-playlist-next)
+  (define-key zemp-mode-map (kbd "K") 'zemp-playlist-prev)
 
   (define-key zemp-mode-map (kbd "s") 'zemp-stop)
   (define-key zemp-mode-map (kbd "SPC") 'zemp-toggle)
