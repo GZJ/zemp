@@ -52,8 +52,10 @@ Install music player (default mplayer)
 
 * Testing
 
-The repository includes a =test/= directory with demo audio files. To try zemp:
+The repository includes a =test/= directory with demo audio files. Try without any other config:
 
-#+begin_src elisp
-(zemp-open-dir (expand-file-name "test" (file-name-directory (locate-library "zemp"))))
+#+begin_src sh
+emacs -q --eval "(add-to-list 'load-path default-directory)" \
+      --eval "(require 'zemp)" \
+      --eval "(zemp-open-dir \"./test\")"
 #+end_src
