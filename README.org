@@ -6,6 +6,16 @@
 
 Zemp is a minimalistic music player that play music through buffer. The backend player can be extended by wrapping third-party players.
 
+* Installation
+
+#+begin_src elisp
+(use-package zemp
+  :defer t
+  :vc (:url "https://github.com/GZJ/zemp"
+            :branch "master"
+            :rev :newest))
+#+end_src
+
 * dependencies 
 Install music player (default mplayer)
 #+begin_src sh
