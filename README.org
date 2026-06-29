@@ -49,3 +49,11 @@ Install music player (default mplayer)
 - =+=: Increase volume
 - =<right>= or =l=: Seek forward
 - =<left>= or =h=: Seek backward
+
+* Testing
+
+The repository includes a =test/= directory with demo audio files. To try zemp:
+
+#+begin_src elisp
+(zemp-open-dir (expand-file-name "test" (file-name-directory (locate-library "zemp"))))
+#+end_src
