@@ -138,6 +138,7 @@
     (when (string-prefix-p "zemp-" (buffer-name buffer))
       (kill-buffer buffer))))
 ;;;;; playlist buffer
+;;;###autoload
 (defun zemp-open-dir(path)
   (interactive "strack path:")
   (setq b  (switch-to-buffer (format "%s-%s" "zemp" (file-name-nondirectory path))))
