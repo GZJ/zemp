@@ -3,7 +3,10 @@
 ;; Copyright (C) 2022 GZJ
 
 ;; Author: GZJ <gzj00@outlook.com>
+;; URL: https://github.com/GZJ/zemp
 ;; Keywords: music player
+;; Version: 1.1.0
+;; Package-Requires: ((emacs "28.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
