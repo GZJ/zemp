@@ -19,26 +19,23 @@ Install music player (default mplayer)
 #+end_src
 
 * quick start
-#+begin_src eslip
-  (require 'zmep)
+#+begin_src elisp
+  (require 'zemp)
   (zemp-open-dir "./Musics")
 
-  ;;setup music player
-  M-x
-  zemp-player-package-set
+  ;; switch music player backend
+  M-x zemp-player-package-set
 #+end_src
 
 * hotkey
-#+begin_src
-  - `j`: Move cursor to next track in playlist
-  - `k`: Move cursor to previous track in playlist
-  - `g`: Update playlist
-  - `n` or `J`: Move cursor to next track and play
-  - `p` or `K`: Move cursor to previous track and play
-  - `s`: Stop playback
-  - `SPC`: Toggle playback
-  - `-`: Decrease volume
-  - `+`: Increase volume
-  - `<right>` or `l`: Seek forward
-  - `<left>` or `h`: Seek backward
-#+end_src
+- =j=: Move cursor to next track in playlist
+- =k=: Move cursor to previous track in playlist
+- =g=: Update playlist
+- =n= or =J=: Move cursor to next track and play
+- =p= or =K=: Move cursor to previous track and play
+- =s=: Stop playback
+- =SPC=: Toggle playback
+- =-=: Decrease volume
+- =+=: Increase volume
+- =<right>= or =l=: Seek forward
+- =<left>= or =h=: Seek backward
