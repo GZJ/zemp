@@ -55,7 +55,5 @@ Install music player (default mplayer)
 The repository includes a =test/= directory with demo audio files. Try without any other config:
 
 #+begin_src sh
-emacs -q --eval "(add-to-list 'load-path default-directory)" \
-      --eval "(require 'zemp)" \
-      --eval "(zemp-open-dir \"./test\")"
+emacs -q --eval '(progn (add-to-list (quote load-path) default-directory) (require (quote zemp)) (zemp-open-dir "./test"))'
 #+end_src
